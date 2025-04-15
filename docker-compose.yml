@@ -1,0 +1,118 @@
+version: "3.8"
+
+services:
+  # Go-based Raft nodes (Q3)
+  go-node1:
+    build:
+      context: .
+      dockerfile: go/Dockerfile
+    container_name: go-node1
+    environment:
+      NODE_ID: "go-node1"
+      PEERS: "go-node1,go-node2,go-node3,go-node4,go-node5"
+    networks:
+      - raftnet
+
+  go-node2:
+    build:
+      context: .
+      dockerfile: go/Dockerfile
+    container_name: go-node2
+    environment:
+      NODE_ID: "go-node2"
+      PEERS: "go-node1,go-node2,go-node3,go-node4,go-node5"
+    networks:
+      - raftnet
+
+  go-node3:
+    build:
+      context: .
+      dockerfile: go/Dockerfile
+    container_name: go-node3
+    environment:
+      NODE_ID: "go-node3"
+      PEERS: "go-node1,go-node2,go-node3,go-node4,go-node5"
+    networks:
+      - raftnet
+
+  go-node4:
+    build:
+      context: .
+      dockerfile: go/Dockerfile
+    container_name: go-node4
+    environment:
+      NODE_ID: "go-node4"
+      PEERS: "go-node1,go-node2,go-node3,go-node4,go-node5"
+    networks:
+      - raftnet
+
+  go-node5:
+    build:
+      context: .
+      dockerfile: go/Dockerfile
+    container_name: go-node5
+    environment:
+      NODE_ID: "go-node5"
+      PEERS: "go-node1,go-node2,go-node3,go-node4,go-node5"
+    networks:
+      - raftnet
+
+  # Python-based Raft nodes (Q4)
+  py-node1:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    container_name: py-node1
+    environment:
+      NODE_ID: "py-node1"
+      PEERS: "py-node1,py-node2,py-node3,py-node4,py-node5"
+    networks:
+      - raftnet
+
+  py-node2:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    container_name: py-node2
+    environment:
+      NODE_ID: "py-node2"
+      PEERS: "py-node1,py-node2,py-node3,py-node4,py-node5"
+    networks:
+      - raftnet
+
+  py-node3:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    container_name: py-node3
+    environment:
+      NODE_ID: "py-node3"
+      PEERS: "py-node1,py-node2,py-node3,py-node4,py-node5"
+    networks:
+      - raftnet
+
+  py-node4:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    container_name: py-node4
+    environment:
+      NODE_ID: "py-node4"
+      PEERS: "py-node1,py-node2,py-node3,py-node4,py-node5"
+    networks:
+      - raftnet
+
+  py-node5:
+    build:
+      context: .
+      dockerfile: python/Dockerfile
+    container_name: py-node5
+    environment:
+      NODE_ID: "py-node5"
+      PEERS: "py-node1,py-node2,py-node3,py-node4,py-node5"
+    networks:
+      - raftnet
+
+networks:
+  raftnet:
+    driver: bridge
